@@ -1,14 +1,14 @@
-import { withAuth } from "next-auth/middleware"
+import { withAuth } from "next-auth/middleware";
 
-import { getSession } from "@/lib/session"
+import { getSession } from "src/lib/session";
 
 export default withAuth({
   callbacks: {
     async authorized({ req }) {
-      const session = await getSession(req.headers.get("cookie"))
-      return !!session
+      const session = await getSession(req.headers.get("cookie"));
+      return !!session;
     },
   },
-})
+});
 
-export const config = { matcher: ["/dashboard/:path*", "/editor"] }
+export const config = { matcher: ["/dashboard/:path*", "/editor"] };
